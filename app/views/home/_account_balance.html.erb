@@ -1,58 +1,219 @@
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shwappie Dashboard</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.min.js"></script>
+    <style>
+        :root {
+            --primary-color: #3fb56b; /* Green from the logo */
+            --secondary-color: #009bcf; /* Blue from the logo */
+            --accent-color: #ec008c; /* Pink from the logo */
+            --highlight-color: #ffc700; /* Yellow from the logo */
+            --text-color: #2c3e50;
+            --background-color: #ffffff;
+            --card-background: #ffffff;
+            --border-radius: 12px;
+            --box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
 
-<div class="bg-white shadow rounded-lg p-6 mb-8">
-  <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-    <!-- First Component: Monthly Expenses -->
-    <div>
-      <!-- Flex container for the values -->
-      <h2 class="text-sm font-semibold text-gray-800">Monthly Expenses</h2>
-      <div style="font-family: 'Roboto', sans-serif;">
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
 
-        <!-- Flex container for the values -->
-        <div class="flex items-baseline space-x-2 mt-2">
-          <p class="text-4xl text-gray-800">300$</p>
-          <p class="text-2xl text-gray-600">/ 400$</p>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: auto;
+            padding: 20px;
+        }
+
+        .dashboard-top {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        @media (max-width: 768px) {
+            .dashboard-top {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .card {
+            background-color: var(--card-background);
+            border-radius: var(--border-radius);
+            padding: 30px;
+            box-shadow: var(--box-shadow);
+            transition: var(--transition);
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .summary {
+            text-align: center;
+        }
+
+        .amount {
+            font-size: 48px;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin: 20px 0;
+        }
+
+        .progress {
+            width: 100%;
+            height: 12px;
+            background-color: var(--secondary-color);
+            border-radius: 6px;
+            overflow: hidden;
+            margin-bottom: 20px;
+        }
+
+        .progress-bar {
+            width: 75%;
+            height: 100%;
+            background-color: var(--accent-color);
+            border-radius: 6px;
+            transition: width 0.5s ease-in-out;
+        }
+
+        .button {
+            display: inline-block;
+            padding: 14px 28px;
+            background-color: var(--highlight-color);
+            color: #fff;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: 600;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+        }
+
+        .button:hover {
+            background-color: #ffa500;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(255, 199, 0, 0.4);
+        }
+
+        h2, h3 {
+            color: var(--text-color);
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        #pieChart {
+            max-width: 100%;
+            max-height: 300px;
+        }
+
+        .chart-container {
+            position: relative;
+            height: 300px;
+        }
+
+        .progress-info {
+            display: flex;
+            justify-content: space-between;
+            font-size: 14px;
+            color: var(--text-color);
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="dashboard-top">
+            <!-- Monthly Summary Card -->
+          <div class="card">
+              <div class="summary">
+                  <h2>Monthly Expenses Summary</h2>
+                  <div class="amount">$355 / $400</div>
+                  <div class="progress-info">
+                      <span>Spent: 89%</span>
+                      <span>Remaining: $45</span>
+                  </div>
+                  <div class="progress">
+                      <div class="progress-bar"></div>
+                  </div>
+                  <!-- Add Expense button links to products_path -->
+                  <%= link_to "Add Expense", products_path, class: "button" %>
+              </div>
+          </div>
+            <!-- Pie Chart Card -->
+            <div class="card">
+                <h3>Spending Breakdown</h3>
+                <div class="chart-container">
+                    <canvas id="pieChart"></canvas>
+                </div>
+            </div>
         </div>
-      </div>
-
     </div>
 
-    <!-- Second Component: Mocked Ring Chart with Legend -->
-    <div class="flex items-center">
-      <!-- Mocked Ring Chart -->
-      <div class="relative">
-        <!-- Outer Ring -->
-        <svg class="w-24 h-24" viewBox="0 0 32 32">
-          <!-- Background circle -->
-          <circle class="text-gray-300" stroke-width="8" stroke="currentColor" fill="transparent" r="16" cx="16" cy="16" />
-          <!-- Tools (60%) -->
-          <circle class="text-blue-500" stroke-width="8" stroke-dasharray="60 40" stroke-dashoffset="0" stroke="currentColor" fill="transparent" r="16" cx="16" cy="16" />
-          <!-- Entertainment (30%) -->
-          <circle class="text-green-500" stroke-width="8" stroke-dasharray="30 70" stroke-dashoffset="-60" stroke="currentColor" fill="transparent" r="16" cx="16" cy="16" />
-          <!-- Toys (10%) -->
-          <circle class="text-gray-500" stroke-width="8" stroke-dasharray="10 90" stroke-dashoffset="-90" stroke="currentColor" fill="transparent" r="16" cx="16" cy="16" />
-        </svg>
-        <!-- Percentage in the center of the ring -->
-        <div class="absolute inset-0 flex items-center justify-center">
-          <span class="text-lg font-semibold text-gray-800">60%</span>
-        </div>
-      </div>
+    <!-- Script to initialize Chart.js when Turbo loads -->
+    <script>
+        function initializeChart() {
+            const ctx = document.getElementById('pieChart').getContext('2d');
+            new Chart(ctx, {
+                type: 'doughnut',
+                data: {
+                    labels: ['Entertainment', 'Tools', 'Toys'],
+                    datasets: [{
+                        data: [30, 60, 10],  // Values in percentages
+                        backgroundColor: [
+                            '#10B981',  /* Entertainment - Green */
+                            '#3B82F6',  /* Tools - Blue */
+                            '#F59E0B'   /* Toys - Yellow */
+                        ]
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            position: 'bottom',
+                        },
+                        title: {
+                            display: true,
+                            text: 'Spending Categories',
+                            color: '#3fb56b',
+                            font: {
+                                size: 16,
+                                weight: 'bold'
+                            }
+                        }
+                    },
+                    cutout: '70%'
+                }
+            });
+        }
 
-      <!-- Legend -->
-      <div class="ml-6">
-        <div class="flex items-center mb-2">
-          <span class="inline-block w-4 h-4 bg-blue-500 mr-2 rounded-full"></span>
-          <span class="text-sm text-gray-800">60% Tools</span>
-        </div>
-        <div class="flex items-center mb-2">
-          <span class="inline-block w-4 h-4 bg-green-500 mr-2 rounded-full"></span>
-          <span class="text-sm text-gray-800">30% Entertainment</span>
-        </div>
-        <div class="flex items-center">
-          <span class="inline-block w-4 h-4 bg-gray-500 mr-2 rounded-full"></span>
-          <span class="text-sm text-gray-800">10% Toys</span>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
+        // Listen for the turbo:load event to ensure the chart is reinitialized after navigation
+        document.addEventListener('turbo:load', function() {
+            initializeChart();
+        });
+
+        // Optionally, run the script when the page loads for the first time
+        document.addEventListener('DOMContentLoaded', function() {
+            initializeChart();
+        });
+    </script>
+</body>
+</html>
