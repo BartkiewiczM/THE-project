@@ -35,9 +35,9 @@
         }
 
         .container {
-            max-width: 1200px;
+            max-width: 100%;
             margin: auto;
-            padding: 20px;
+            padding: 0 20px; /* Added padding on the sides */
         }
 
         .dashboard-top {
@@ -45,6 +45,7 @@
             grid-template-columns: 2fr 1fr;
             gap: 30px;
             margin-bottom: 40px;
+            width: 100%; /* Ensures the dashboard takes up full width */
         }
 
         @media (max-width: 768px) {
@@ -59,6 +60,7 @@
             padding: 30px;
             box-shadow: var(--box-shadow);
             transition: var(--transition);
+            width: 100%; /* Full width for cards */
         }
 
         .card:hover {
@@ -70,19 +72,39 @@
             text-align: center;
         }
 
+        /* Flex container to keep amounts side by side */
+        .flex-amounts {
+            display: flex;
+            justify-content: center;
+            align-items: baseline;
+            gap: 10px;
+            max-width: 100%; /* Ensures no overflow */
+            white-space: nowrap; /* Prevents text wrapping */
+            flex-shrink: 1; /* Allows shrinking if needed */
+        }
+
         .amount {
-            font-size: 42px;
+            font-size: 3.5vw; /* Dynamic size based on viewport width */
             font-weight: 700;
             color: var(--primary-color);
-            margin: 20px 0;
         }
 
         .amount2 {
-            font-size: 28px;
+            font-size: 2.5vw; /* Dynamic size based on viewport width */
             font-weight: 700;
             color: var(--primary-color-dark);
-            margin: 20px 0;
             opacity: 0.5;
+        }
+
+        /* Ensures the amount doesn't become too small on very small screens */
+        @media (max-width: 500px) {
+            .amount {
+                font-size: 24px; /* Minimum font size */
+            }
+
+            .amount2 {
+                font-size: 18px; /* Minimum font size */
+            }
         }
 
         .progress {
@@ -135,6 +157,7 @@
         .chart-container {
             position: relative;
             height: 300px;
+            width: 100%; /* Ensures chart container takes up full width */
         }
 
         .progress-info {
@@ -154,8 +177,8 @@
               <div class="summary">
                 <h2>Monthly Expenses Summary</h2>
 
-                <!-- Flex container for side by side layout -->
-                <div class="flex justify-center items-baseline space-x-2">
+                <!-- Flex container for side-by-side layout with responsive text scaling -->
+                <div class="flex-amounts">
                   <div class="amount"><%= number_to_currency(@total_expenses, precision: 2) %></div>
                   <div class="amount2">/</div>
                   <div class="amount2"><%= number_to_currency(@monthly_limit, precision: 2) %></div>
@@ -173,6 +196,7 @@
                 <%= link_to "Add Expense", products_path, class: "button" %>
               </div>
             </div>
+
             <!-- Pie Chart Card -->
             <div class="card">
                 <h3>Spending Breakdown</h3>
