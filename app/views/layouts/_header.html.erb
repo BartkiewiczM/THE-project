@@ -1,73 +1,62 @@
-<header class="bg-gray-800 text-white py-4 shadow-md">
+<header class="bg-[#c1dbcc] text-white py-4 shadow-md">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
 
-    <!-- Logo and App Name as a Button to Root -->
-    <div class="flex items-center space-x-4">
+    <!-- Burger Menu (visible on all devices) -->
+    <div class="relative">
+      <button class="block focus:outline-none" id="menu-toggle">
+        <svg id="burger-icon" class="h-8 w-8 text-[#1c4b46]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+        </svg>
+      </button>
+
+      <!-- Dropdown Menu (initially hidden) -->
+      <div id="mobile-menu" class="hidden absolute left-0 mt-2 w-48 bg-[#c1dbcc] text-gray-800 rounded-md shadow-lg z-50">
+        <nav class="space-y-2 px-4 py-4 font-sans font-bold">
+          <a href="#" class="block text-gray-800 hover:bg-gray-100 rounded-md px-4 py-2 transition duration-150 ease-in-out">Investments</a>
+          <a href="<%= subscriptions_path %>" class="block text-gray-800 hover:bg-gray-100 rounded-md px-4 py-2 transition duration-150 ease-in-out">Subscriptions</a>
+          <a href="#" class="block text-gray-800 hover:bg-gray-100 rounded-md px-4 py-2 transition duration-150 ease-in-out">Contact</a>
+          <a href="<%= partners_path %>" class="block text-gray-800 hover:bg-gray-100 rounded-md px-4 py-2 transition duration-150 ease-in-out">Partners</a>
+        </nav>
+      </div>
+    </div>
+
+    <!-- Logo and App Name in the Center -->
+    <div class="absolute left-1/2 transform -translate-x-1/2">
       <%= link_to root_path, class: "flex items-center space-x-4" do %>
         <!-- Logo -->
         <img src="icon.svg" alt="The App Logo" class="h-10 w-10">
         <!-- App Name -->
-        <h1 class="text-2xl font-bold">SubCard</h1>
+        <%= image_tag "Shwappie.png", alt: "Card Info", class: "h-14" %>
       <% end %>
     </div>
 
-    <!-- Hamburger button (visible on mobile) -->
-    <button class="lg:hidden block text-white focus:outline-none" id="menu-toggle">
-      <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
-      </svg>
-    </button>
-
-    <!-- Navigation Links (hidden on mobile, visible on large screens) -->
-    <nav class="hidden lg:flex space-x-4" id="menu">
-      <a href="#" class="text-gray-300 hover:text-white">Investments</a>
-      <a href="<%= subscriptions_path %>" class="text-gray-300 hover:text-white">Subscriptions</a>
-      <a href="#" class="text-gray-300 hover:text-white">Contact</a>
-      <a href="<%= partners_path %>" class="text-gray-300 hover:text-white">Partners</a>
-    </nav>
-
-    <!-- Button to toggle the card info dropdown -->
-    <div class="relative">
-      <button class="text-white focus:outline-none" id="card-toggle">
-        <!-- Button icon (you can change this to any icon or text) -->
-        <%= image_tag "drop-down-svgrepo-com.svg", alt: "Card Info", class: "h-8 w-8" %>
-      </button>
-
-      <!-- Render the card info dropdown from the partial (make it relative to the button) -->
-      <%= render 'shared/card_info' %>
-    </div>
-
-    <!-- User Icon (visible on all devices) -->
-    <div class="flex items-center">
+    <!-- User Icon and Card Info -->
+    <div class="flex items-center space-x-4">
+      <!-- User Icon (visible on all devices) -->
       <%= link_to users_path, class: "block text-white focus:outline-none" do %>
-        <!-- Use image_tag to load the custom SVG icon -->
         <%= image_tag "user-circle-svgrepo-com.svg", alt: "User Profile", class: "h-8 w-8" %>
       <% end %>
     </div>
 
   </div>
-
-  <!-- Mobile Menu (initially hidden) -->
-  <div class="lg:hidden" id="mobile-menu" style="display: none;">
-    <nav class="space-y-2 px-4 py-2">
-      <a href="#" class="block text-gray-300 hover:text-white">Investments</a>
-      <a href="<%= subscriptions_path %>" class="block text-gray-300 hover:text-white">Subscriptions</a>
-      <a href="#" class="block text-gray-300 hover:text-white">Contact</a>
-      <a href="<%= partners_path %>" class="block text-gray-300 hover:text-white">Partners</a>
-    </nav>
-  </div>
 </header>
 
-
-
 <script>
+  // Toggle the burger menu dropdown and change burger icon color
   document.getElementById('menu-toggle').addEventListener('click', function() {
     const menu = document.getElementById('mobile-menu');
-    menu.style.display = menu.style.display === 'none' || menu.style.display === '' ? 'block' : 'none';
-  });
+    const burgerIcon = document.getElementById('burger-icon');
 
-  document.getElementById('card-toggle').addEventListener('click', function() {
-    const cardDropdown = document.getElementById('card-info-dropdown');
-    cardDropdown.style.display = cardDropdown.style.display === 'none' ? 'block' : 'none';
+    // Toggle the menu visibility
+    menu.classList.toggle('hidden');
+
+    // Toggle burger button color immediately on the first click
+    if (burgerIcon.classList.contains('text-[#1c4b46]')) {
+      burgerIcon.classList.remove('text-[#1c4b46]');
+      burgerIcon.classList.add('text-white');
+    } else {
+      burgerIcon.classList.remove('text-white');
+      burgerIcon.classList.add('text-[#1c4b46]');
+    }
   });
 </script>
