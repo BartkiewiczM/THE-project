@@ -26,6 +26,17 @@
       <a href="<%= partners_path %>" class="text-gray-300 hover:text-white">Partners</a>
     </nav>
 
+    <!-- Button to toggle the card info dropdown -->
+    <div class="relative">
+      <button class="text-white focus:outline-none" id="card-toggle">
+        <!-- Button icon (you can change this to any icon or text) -->
+        <%= image_tag "drop-down-svgrepo-com.svg", alt: "Card Info", class: "h-8 w-8" %>
+      </button>
+
+      <!-- Render the card info dropdown from the partial (make it relative to the button) -->
+      <%= render 'shared/card_info' %>
+    </div>
+
     <!-- User Icon (visible on all devices) -->
     <div class="flex items-center">
       <%= link_to users_path, class: "block text-white focus:outline-none" do %>
@@ -47,9 +58,16 @@
   </div>
 </header>
 
+
+
 <script>
   document.getElementById('menu-toggle').addEventListener('click', function() {
     const menu = document.getElementById('mobile-menu');
     menu.style.display = menu.style.display === 'none' || menu.style.display === '' ? 'block' : 'none';
+  });
+
+  document.getElementById('card-toggle').addEventListener('click', function() {
+    const cardDropdown = document.getElementById('card-info-dropdown');
+    cardDropdown.style.display = cardDropdown.style.display === 'none' ? 'block' : 'none';
   });
 </script>
