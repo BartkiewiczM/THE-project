@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   resources :products, only: [:index, :show]
   resources :partners, only: [:index]
   resources :purchases, only: [:create]
+  resources :cart_items, only: [:index, :create, :destroy, :new]
 
   resources :users, only: [:index] do
     collection do

@@ -9,3 +9,6 @@ application.register("hello", HelloController)
 
 import PartnersSidebarController from "./partners_sidebar_controller"
 application.register("partners-sidebar", PartnersSidebarController)
+
+import TurboModalController from "./turbo_modal_controller"
+application.register("turbo-modal", TurboModalController)
