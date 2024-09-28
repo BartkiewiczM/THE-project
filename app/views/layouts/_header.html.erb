@@ -27,21 +27,6 @@
       <% end %>
     </div>
 
-    <!-- Hamburger button (visible on mobile) -->
-    <button class="lg:hidden block text-white focus:outline-none" id="menu-toggle">
-      <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
-      </svg>
-    </button>
-
-    <!-- Navigation Links (hidden on mobile, visible on large screens) -->
-    <nav class="hidden lg:flex space-x-4" id="menu">
-      <a href="#" class="text-gray-300 hover:text-white">Investments</a>
-      <a href="<%= products_path %>" class="text-gray-300 hover:text-white">Products</a>
-      <a href="#" class="text-gray-300 hover:text-white">Contact</a>
-      <a href="<%= partners_path %>" class="text-gray-300 hover:text-white">Partners</a>
-    </nav>
-
     <!-- User Icon (visible on all devices) -->
     <div class="flex items-center">
       <%= link_to users_path, class: "block text-white focus:outline-none" do %>
