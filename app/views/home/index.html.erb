@@ -1,19 +1,6 @@
 <div class="max-w-7xl mx-auto p-6">
-  <!-- Account Balance and Next Top-Up Section -->
-  <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-    <!-- Account Balance -->
-    <div class="bg-white shadow rounded-lg p-6">
-      <h2 class="text-2xl font-semibold text-gray-800">Account Balance</h2>
-      <p class="text-xl text-gray-600 mt-2"><%= number_to_currency(150.75, precision: 2) %></p>
-    </div>
-
-    <!-- Next Top-Up Section -->
-    <div class="bg-white shadow rounded-lg p-6">
-      <h2 class="text-2xl font-semibold text-gray-800">Next Top-Up</h2>
-      <p class="text-xl text-gray-600 mt-2">Amount: <%= number_to_currency(200.00, precision: 2) %></p>
-      <p class="text-xl text-gray-600 mt-2">Date: October 30, 2024</p>
-    </div>
-  </div>
+  <!-- Render Account Balance Partial -->
+  <%= render 'account_balance' %>
 
   <!-- Active Subscriptions Section -->
   <div class="bg-white shadow rounded-lg p-6 mb-8">
