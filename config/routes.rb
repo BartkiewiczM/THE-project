@@ -14,5 +14,10 @@ Rails.application.routes.draw do
 
   resources :subscriptions, only: [:index]
   resources :partners, only: [:index]
-  resources :users, only: [:index]
+
+  resources :users, only: [:index] do
+    collection do
+      post 'set_limit', to: 'users#set_limit'
+    end
+  end
 end

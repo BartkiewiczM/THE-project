@@ -1,1 +1,60 @@
-userrrr
+<div class="max-w-7xl mx-auto px-4 py-8">
+  <h1 class="text-3xl font-bold text-gray-800 mb-6">User Dashboard</h1>
+
+  <!-- Monthly Spending Limit Section -->
+  <div class="bg-white shadow-lg rounded-lg p-6 mb-8">
+    <h2 class="text-2xl font-semibold text-gray-800">Set Monthly Spending Limit</h2>
+    <p class="text-gray-600 mt-2">Current Limit: <%= number_to_currency(@monthly_limit, precision: 2) %></p>
+
+    <!-- Form to update monthly limit -->
+    <form action="<%= set_limit_users_path %>" method="post" class="mt-4">
+      <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+      <label for="limit" class="block text-sm font-medium text-gray-700">New Limit</label>
+      <input type="number" step="0.01" name="limit" id="limit" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm" placeholder="Enter new limit">
+      <button type="submit" class="mt-4 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+        Update Limit
+      </button>
+    </form>
+  </div>
+
+  <!-- Display success or error messages -->
+  <% if flash[:notice] %>
+    <div class="bg-green-100 border-l-4 border-green-500 text-green-700 p-4 mb-4">
+      <p><%= flash[:notice] %></p>
+    </div>
+  <% elsif flash[:alert] %>
+    <div class="bg-red-100 border-l-4 border-red-500 text-red-700 p-4 mb-4">
+      <p><%= flash[:alert] %></p>
+    </div>
+  <% end %>
+
+  <!-- Expense Overview Section -->
+  <div class="bg-white shadow-lg rounded-lg p-6 mb-8">
+    <h2 class="text-2xl font-semibold text-gray-800">Current Expenses</h2>
+    <p class="text-gray-600 mt-2">You have spent <%= number_to_currency(@total_expenses, precision: 2) %> this month.</p>
+  </div>
+
+  <!-- Active Rentals Section -->
+  <div class="bg-white shadow-lg rounded-lg p-6 mb-8">
+    <h2 class="text-2xl font-semibold text-gray-800">Active Rentals</h2>
+
+    <div class="mt-4 space-y-4">
+      <% @active_rentals.each do |rental| %>
+        <% product = rental.product %>
+        <div class="bg-gray-100 p-4 rounded-lg shadow-md">
+          <h3 class="text-xl font-semibold text-gray-800"><%= product.name %></h3>
+          <p class="text-gray-600">Price: <%= number_to_currency(product.price, precision: 2) %></p>
+
+          <!-- Display remaining rental time (mocked as a random date for now) -->
+          <% time_left = (Time.now + rand(1..30).days) %>
+          <p class="text-gray-600">Time left until return: <%= time_ago_in_words(time_left) %> left.</p>
+
+          <!-- A progress bar to visualize the time left -->
+          <div class="w-full bg-gray-200 h-2 mt-2 rounded-full">
+            <div class="bg-blue-500 h-2 rounded-full" style="width: <%= rand(30..100) %>%"></div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
