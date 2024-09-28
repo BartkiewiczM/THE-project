@@ -1,24 +1,7 @@
-<header class="bg-[#c1dbcc] text-white py-4 shadow-md">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
+<header class="bg-[#c1dbcc] text-white py-8 shadow-md"> <!-- Increased padding on y-axis for more height -->
+  <div class="max-w-full mx-auto px-6 sm:px-8 lg:px-12 flex items-center justify-between h-1"> <!-- Added fixed height -->
 
-    <!-- Burger Menu (visible on all devices) -->
-    <div class="relative">
-      <button class="block focus:outline-none" id="menu-toggle">
-        <svg id="burger-icon" class="h-8 w-8 text-[#1c4b46]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
-        </svg>
-      </button>
-
-      <!-- Dropdown Menu (initially hidden) -->
-      <div id="mobile-menu" class="hidden absolute left-0 mt-2 w-48 bg-[#c1dbcc] text-gray-800 rounded-md shadow-lg z-50">
-        <nav class="space-y-2 px-4 py-4 font-sans font-bold">
-          <a href="#" class="block text-gray-800 hover:bg-gray-100 rounded-md px-4 py-2 transition duration-150 ease-in-out">Investments</a>
-          <a href="#" class="block text-gray-800 hover:bg-gray-100 rounded-md px-4 py-2 transition duration-150 ease-in-out">Contact</a>
-          <a href="<%= partners_path %>" class="block text-gray-800 hover:bg-gray-100 rounded-md px-4 py-2 transition duration-150 ease-in-out">Partners</a>
-          <a href="<%= products_path %>" class="block text-gray-800 hover:bg-gray-100 rounded-md px-4 py-2 transition duration-150 ease-in-out">Products</a>
-        </nav>
-      </div>
-    </div>
+    <!-- Burger Menu (if needed, you can uncomment and style it here) -->
 
     <!-- Logo and App Name in the Center -->
     <div class="absolute left-1/2 transform -translate-x-1/2">
@@ -28,32 +11,5 @@
       <% end %>
     </div>
 
-    <!-- User Icon (visible on all devices) -->
-    <div class="flex items-center">
-      <%= link_to users_path, class: "block text-white focus:outline-none" do %>
-        <%= image_tag "user-circle-svgrepo-com.svg", alt: "User Profile", class: "h-8 w-8" %>
-      <% end %>
-    </div>
-
   </div>
 </header>
-
-<script>
-  // Toggle the burger menu dropdown and change burger icon color
-  document.getElementById('menu-toggle').addEventListener('click', function() {
-    const menu = document.getElementById('mobile-menu');
-    const burgerIcon = document.getElementById('burger-icon');
-
-    // Toggle the menu visibility
-    menu.classList.toggle('hidden');
-
-    // Toggle burger button color immediately on the first click
-    if (burgerIcon.classList.contains('text-[#1c4b46]')) {
-      burgerIcon.classList.remove('text-[#1c4b46]');
-      burgerIcon.classList.add('text-white');
-    } else {
-      burgerIcon.classList.remove('text-white');
-      burgerIcon.classList.add('text-[#1c4b46]');
-    }
-  });
-</script>
