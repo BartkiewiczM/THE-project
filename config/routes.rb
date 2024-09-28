@@ -13,4 +13,5 @@ Rails.application.routes.draw do
   root "home#index"
 
   resources :subscriptions, only: [:index]
+  resources :partners, only: [:index]
 end
