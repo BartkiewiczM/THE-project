@@ -1,0 +1,86 @@
+<div class="max-w-7xl mx-auto p-6">
+  <!-- Account Balance and Next Top-Up Section -->
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+    <!-- Account Balance -->
+    <div class="bg-white shadow rounded-lg p-6">
+      <h2 class="text-2xl font-semibold text-gray-800">Account Balance</h2>
+      <p class="text-xl text-gray-600 mt-2"><%= number_to_currency(150.75, precision: 2) %></p>
+    </div>
+
+    <!-- Next Top-Up Section -->
+    <div class="bg-white shadow rounded-lg p-6">
+      <h2 class="text-2xl font-semibold text-gray-800">Next Top-Up</h2>
+      <p class="text-xl text-gray-600 mt-2">Amount: <%= number_to_currency(200.00, precision: 2) %></p>
+      <p class="text-xl text-gray-600 mt-2">Date: October 30, 2024</p>
+    </div>
+  </div>
+
+  <!-- Active Subscriptions Section -->
+  <div class="bg-white shadow rounded-lg p-6 mb-8">
+    <h2 class="text-2xl font-semibold text-gray-800 mb-6">Active Subscriptions</h2>
+
+    <!-- Subscription Cards -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <!-- Mocked Subscription Cards -->
+      <div class="bg-gray-100 p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300">
+        <div class="flex items-center justify-between">
+          <h3 class="text-xl font-semibold text-gray-800">Netflix</h3>
+          <span class="text-lg font-medium text-gray-600">$15.99</span>
+        </div>
+        <p class="text-gray-500 mt-2">Billing: Monthly</p>
+        <p class="text-gray-500">Next payment: October 30, 2024</p>
+      </div>
+
+      <div class="bg-gray-100 p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300">
+        <div class="flex items-center justify-between">
+          <h3 class="text-xl font-semibold text-gray-800">HBO Max</h3>
+          <span class="text-lg font-medium text-gray-600">$14.99</span>
+        </div>
+        <p class="text-gray-500 mt-2">Billing: Monthly</p>
+        <p class="text-gray-500">Next payment: October 28, 2024</p>
+      </div>
+
+      <div class="bg-gray-100 p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300">
+        <div class="flex items-center justify-between">
+          <h3 class="text-xl font-semibold text-gray-800">Amazon Prime Video</h3>
+          <span class="text-lg font-medium text-gray-600">$12.99</span>
+        </div>
+        <p class="text-gray-500 mt-2">Billing: Monthly</p>
+        <p class="text-gray-500">Next payment: October 27, 2024</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Active Investments Section -->
+  <div class="bg-white shadow rounded-lg p-6">
+    <h2 class="text-2xl font-semibold text-gray-800 mb-6">Active Investments</h2>
+
+    <!-- Investment Cards -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <!-- Mocked Investment Cards -->
+      <div class="bg-gray-100 p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300">
+        <div class="flex items-center justify-between">
+          <h3 class="text-xl font-semibold text-gray-800">Vanguard S&P 500 ETF</h3>
+          <span class="text-lg font-medium text-gray-600">$50.00</span>
+        </div>
+        <p class="text-gray-500 mt-2">Invested monthly</p>
+      </div>
+
+      <div class="bg-gray-100 p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300">
+        <div class="flex items-center justify-between">
+          <h3 class="text-xl font-semibold text-gray-800">iShares Core MSCI EAFE ETF</h3>
+          <span class="text-lg font-medium text-gray-600">$30.00</span>
+        </div>
+        <p class="text-gray-500 mt-2">Invested monthly</p>
+      </div>
+
+      <div class="bg-gray-100 p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300">
+        <div class="flex items-center justify-between">
+          <h3 class="text-xl font-semibold text-gray-800">SPDR Gold Shares ETF</h3>
+          <span class="text-lg font-medium text-gray-600">$20.00</span>
+        </div>
+        <p class="text-gray-500 mt-2">Invested monthly</p>
+      </div>
+    </div>
+  </div>
+</div>
