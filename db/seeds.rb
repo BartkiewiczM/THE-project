@@ -2,6 +2,7 @@
 UserPurchase.destroy_all
 Product.destroy_all
 Partner.destroy_all
+User.destroy_all
 
 # db/seeds.rb
 
