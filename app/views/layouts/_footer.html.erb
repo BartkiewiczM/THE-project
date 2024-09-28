@@ -1,4 +1,4 @@
-<footer class="fixed bottom-0 left-0 right-0 w-full bg-[#c1dbcc] text-[#1c4b46] py-2 shadow-inner mb-safe">
+<footer class="fixed bottom-0 left-0 right-0 w-full bg-[#c1dbcc] text-[#1c4b46] py-2 shadow-inner">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center">
 
     <!-- Home Icon (Redirect to root_path) -->
@@ -28,10 +28,19 @@
   </div>
 </footer>
 
+<!-- Add extra margin at the bottom to avoid obstruction -->
 <style>
-  /* Add safe-area bottom padding to accommodate for mobile devices with notches */
   footer {
-    padding-bottom: constant(safe-area-inset-bottom); /* Deprecated */
-    padding-bottom: env(safe-area-inset-bottom); /* Standard syntax */
+    /* Default padding */
+    padding-bottom: 20px;
+    /* Add extra space for mobile (especially for iPhone swipe up area) */
+    margin-bottom: 20px; /* Ensures enough space below the icons */
+  }
+
+  @media (max-width: 768px) {
+    footer {
+      /* For mobile devices, add more margin to ensure space for the swipe-up gesture area */
+      margin-bottom: 40px;
+    }
   }
 </style>
