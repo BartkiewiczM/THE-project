@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   root "home#index"
 
-  resources :subscriptions, only: [:index]
+  resources :products, only: [:index, :show]
   resources :partners, only: [:index]
 
   resources :users, only: [:index] do

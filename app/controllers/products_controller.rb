@@ -1,4 +1,4 @@
-class SubscriptionsController < ApplicationController
+class ProductsController < ApplicationController
   def index
     # Mock data for subscriptions
     @products = Product.all
@@ -15,5 +15,8 @@ class SubscriptionsController < ApplicationController
 
     # Available tags for filtering
     @available_tags = Product.distinct.pluck(:tag)
+  end
+  def show
+    @product = Product.find(params[:id])
   end
 end

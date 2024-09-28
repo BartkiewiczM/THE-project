@@ -1,7 +1,7 @@
 <div class="max-w-7xl mx-auto p-6">
   <!-- Search Form -->
   <div class="mb-6">
-    <form action="<%= subscriptions_path %>" method="get" class="flex items-center space-x-4">
+    <form action="<%= products_path %>" method="get" class="flex items-center space-x-4">
       <input
         type="text"
         name="query"
@@ -19,14 +19,14 @@
   <div class="mb-6">
     <h3 class="text-lg font-semibold">Filter by Tag:</h3>
     <div class="flex space-x-4 mt-2 overflow-scroll no-scrollbar">
+      <a href="<%= products_path %>" class="bg-gray-200 text-gray-700 px-4 py-2 rounded-lg hover:bg-gray-300">
+        Clear Filter
+      </a>
       <% @available_tags.each do |tag| %>
-        <a href="<%= subscriptions_path(tag: tag) %>" class="bg-gray-200 text-gray-700 px-4 py-2 rounded-lg hover:bg-gray-300">
+        <a href="<%= products_path(tag: tag) %>" class="bg-gray-200 text-gray-700 px-4 py-2 rounded-lg hover:bg-gray-300">
           <%= tag %>
         </a>
       <% end %>
-      <a href="<%= subscriptions_path %>" class="bg-gray-200 text-gray-700 px-4 py-2 rounded-lg hover:bg-gray-300">
-        Clear Filter
-      </a>
     </div>
   </div>
 
@@ -34,11 +34,13 @@
   <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
     <% if @products.any? %>
       <% @products.each do |product| %>
-        <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300">
-          <h3 class="text-xl font-semibold text-gray-800"><%= product.name %></h3>
-          <p class="text-lg text-gray-600"><%= sprintf("%.2f", product.price) %>zł</p>
-          <p class="text-gray-500 mt-2">Tag: <%= product.tag %></p>
-        </div>
+        <a href="<%= product_path(product.id) %>" class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-30 display-block">
+<!--          <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300">-->
+            <h3 class="text-xl font-semibold text-gray-800"><%= product.name %></h3>
+            <p class="text-lg text-gray-600"><%= sprintf("%.2f", product.price) %>zł</p>
+            <p class="text-gray-500 mt-2">Tag: <%= product.tag %></p>
+<!--          </div>-->
+        </a>
       <% end %>
     <% else %>
       <p class="text-gray-600">No products found.</p>

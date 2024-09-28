@@ -13,7 +13,6 @@
       <div id="mobile-menu" class="hidden absolute left-0 mt-2 w-48 bg-[#c1dbcc] text-gray-800 rounded-md shadow-lg z-50">
         <nav class="space-y-2 px-4 py-4 font-sans font-bold">
           <a href="#" class="block text-gray-800 hover:bg-gray-100 rounded-md px-4 py-2 transition duration-150 ease-in-out">Investments</a>
-          <a href="<%= subscriptions_path %>" class="block text-gray-800 hover:bg-gray-100 rounded-md px-4 py-2 transition duration-150 ease-in-out">Subscriptions</a>
           <a href="#" class="block text-gray-800 hover:bg-gray-100 rounded-md px-4 py-2 transition duration-150 ease-in-out">Contact</a>
           <a href="<%= partners_path %>" class="block text-gray-800 hover:bg-gray-100 rounded-md px-4 py-2 transition duration-150 ease-in-out">Partners</a>
         </nav>
@@ -23,16 +22,28 @@
     <!-- Logo and App Name in the Center -->
     <div class="absolute left-1/2 transform -translate-x-1/2">
       <%= link_to root_path, class: "flex items-center space-x-4" do %>
-        <!-- Logo -->
-        <img src="icon.svg" alt="The App Logo" class="h-10 w-10">
         <!-- App Name -->
         <%= image_tag "Shwappie.png", alt: "Card Info", class: "h-14" %>
       <% end %>
     </div>
 
-    <!-- User Icon and Card Info -->
-    <div class="flex items-center space-x-4">
-      <!-- User Icon (visible on all devices) -->
+    <!-- Hamburger button (visible on mobile) -->
+    <button class="lg:hidden block text-white focus:outline-none" id="menu-toggle">
+      <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+      </svg>
+    </button>
+
+    <!-- Navigation Links (hidden on mobile, visible on large screens) -->
+    <nav class="hidden lg:flex space-x-4" id="menu">
+      <a href="#" class="text-gray-300 hover:text-white">Investments</a>
+      <a href="<%= products_path %>" class="text-gray-300 hover:text-white">Products</a>
+      <a href="#" class="text-gray-300 hover:text-white">Contact</a>
+      <a href="<%= partners_path %>" class="text-gray-300 hover:text-white">Partners</a>
+    </nav>
+
+    <!-- User Icon (visible on all devices) -->
+    <div class="flex items-center">
       <%= link_to users_path, class: "block text-white focus:outline-none" do %>
         <%= image_tag "user-circle-svgrepo-com.svg", alt: "User Profile", class: "h-8 w-8" %>
       <% end %>
