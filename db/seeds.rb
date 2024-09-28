@@ -132,3 +132,9 @@ products.each do |product_data|
   end
 end
 
+UserPurchase.create([
+                      {user_id: 1, product_id: Product.first.id},
+                      {user_id: 1, product_id: Product.second.id},
+                      {user_id: 1, product_id: Product.third.id},
+                      {user_id: 1, product_id: Product.fourth.id}
+])
