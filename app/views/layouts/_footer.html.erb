@@ -1,4 +1,4 @@
-<footer class="fixed bottom-0 left-0 right-0 w-full bg-[#c1dbcc] text-[#1c4b46] py-2 shadow-inner">
+<footer class="fixed bottom-0 left-0 right-0 w-full bg-[#c1dbcc] text-[#1c4b46] py-2 shadow-inner mb-safe">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center">
 
     <!-- Home Icon (Redirect to root_path) -->
@@ -27,3 +27,11 @@
 
   </div>
 </footer>
+
+<style>
+  /* Add safe-area bottom padding to accommodate for mobile devices with notches */
+  footer {
+    padding-bottom: constant(safe-area-inset-bottom); /* Deprecated */
+    padding-bottom: env(safe-area-inset-bottom); /* Standard syntax */
+  }
+</style>
