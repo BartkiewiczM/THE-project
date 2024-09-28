@@ -132,6 +132,8 @@ products.each do |product_data|
   end
 end
 
+User.create(name: "John", surname: "Doe", used_funds: 0, total_funds: 500, id: 1)
+
 UserPurchase.create([
                       {user_id: 1, product_id: Product.first.id},
                       {user_id: 1, product_id: Product.second.id},
