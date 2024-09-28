@@ -14,4 +14,5 @@ Rails.application.routes.draw do
 
   resources :subscriptions, only: [:index]
   resources :partners, only: [:index]
+  resources :users, only: [:index]
 end
