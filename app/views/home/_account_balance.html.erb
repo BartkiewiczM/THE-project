@@ -8,11 +8,11 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.min.js"></script>
     <style>
         :root {
-            --primary-color: #3fb56b; /* Green from the logo */
-            --primary-color-dark: #2d6a4f; /* Darker green from the logo */
-            --secondary-color: #009bcf; /* Blue from the logo */
-            --accent-color: #ec008c; /* Pink from the logo */
-            --highlight-color: #ffc700; /* Yellow from the logo */
+            --primary-color: #3fb56b;
+            --primary-color-dark: #2d6a4f;
+            --secondary-color: #009bcf;
+            --accent-color: #ec008c;
+            --highlight-color: #ffc700;
             --text-color: #2c3e50;
             --background-color: #ffffff;
             --card-background: #ffffff;
@@ -82,7 +82,6 @@
             font-weight: 700;
             color: var(--primary-color-dark);
             margin: 20px 0;
-            /* make it a bit transparent */
             opacity: 0.5;
         }
 
@@ -96,7 +95,7 @@
         }
 
         .progress-bar {
-            width: 75%;
+            width: <%= @spent_percentage %>%;
             height: 100%;
             background-color: var(--accent-color);
             border-radius: 6px;
@@ -157,14 +156,14 @@
 
                 <!-- Flex container for side by side layout -->
                 <div class="flex justify-center items-baseline space-x-2">
-                  <div class="amount">$355</div>
+                  <div class="amount"><%= number_to_currency(@total_expenses, precision: 2) %></div>
                   <div class="amount2">/</div>
-                  <div class="amount2">$400</div>
+                  <div class="amount2"><%= number_to_currency(@monthly_limit, precision: 2) %></div>
                 </div>
 
                 <div class="progress-info">
-                  <span>Spent: 89%</span>
-                  <span>Remaining: $45</span>
+                  <span>Spent: <%= @spent_percentage %>%</span>
+                  <span>Remaining: <%= number_to_currency(@remaining_funds, precision: 2) %></span>
                 </div>
                 <div class="progress">
                   <div class="progress-bar"></div>
