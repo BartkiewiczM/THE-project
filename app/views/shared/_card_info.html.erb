@@ -1,0 +1,10 @@
+<div class="absolute right-0 mt-2 w-56 bg-white rounded-md shadow-lg z-50" id="card-info-dropdown">
+  <div class="p-4">
+    <!-- Mocked Card Image -->
+    <img src="<%= asset_path('mock-card-image.svg') %>" alt="Card" class="h-20 w-full object-cover rounded-md mb-4">
+
+    <!-- User Information (mocked with total funds and expenses) -->
+    <p class="text-gray-700 font-bold">Total Funds: <%= number_to_currency(@monthly_limit, precision: 2) %></p>
+    <p class="text-gray-700">Total Expenses: <%= number_to_currency(@total_expenses, precision: 2) %></p>
+  </div>
+</div>
