@@ -83,43 +83,36 @@ products = [
   {
     partner: "Outdoor Adventures",
     items: [
-      {name: "Trekking Poles", price: 39.99, description: "Durable trekking poles for your hikes.", tag: "Sports & Outdoor Equipment", image_url: ""},
-      {name: "Camping Tent", price: 99.99, description: "Stay comfortable on your camping trips with this tent.", tag: "Sports & Outdoor Equipment", image_url: ""}
+      {name: "Trekking Poles", price: 39.99, description: "Durable trekking poles for your hikes.", tag: "Sports & Outdoor Equipment", image_url: "https://unsplash.com/photos/zW8NsaUruMU/download?ixid=M3wxMjA3fDB8MXxzZWFyY2h8Nnx8VHJla2tpbmclMjBQb2xlc3xlbnwwfHx8fDE3Mjc1NTU5MjR8MA&force=true&w=640"},
+      {name: "Camping Tent", price: 99.99, description: "Stay comfortable on your camping trips with this tent.", tag: "Sports & Outdoor Equipment", image_url: "https://unsplash.com/photos/750S3VOelxg/download?ixid=M3wxMjA3fDB8MXxzZWFyY2h8Mnx8Q2FtcGluZyUyMFRlbnR8ZW58MHx8fHwxNzI3NTU1OTgxfDA&force=true&w=640"}
     ]
   },
   {
     partner: "Fashion Fiesta",
     items: [
-      {name: "Summer Dress", price: 49.99, description: "Stay stylish with this beautiful summer dress.", tag: "Fashion & Costumes", image_url: ""},
-      {name: "Halloween Costume", price: 29.99, description: "Stand out this Halloween with this unique costume.", tag: "Fashion & Costumes", image_url: ""}
+      {name: "Summer Dress", price: 49.99, description: "Stay stylish with this beautiful summer dress.", tag: "Fashion & Costumes", image_url: "https://unsplash.com/photos/p9Ekz8XckR0/download?ixid=M3wxMjA3fDB8MXxzZWFyY2h8M3x8U3VtbWVyJTIwRHJlc3N8ZW58MHx8fHwxNzI3NTU2MDE1fDA&force=true&w=640"},
+      {name: "Halloween Costume", price: 29.99, description: "Stand out this Halloween with this unique costume.", tag: "Fashion & Costumes", image_url: "https://unsplash.com/photos/XUbBv6vOMak/download?ixid=M3wxMjA3fDB8MXxzZWFyY2h8N3x8SGFsbG93ZWVuJTIwQ29zdHVtZXxlbnwwfHx8fDE3Mjc1NTYwNjB8MA&force=true&w=640"}
     ]
   },
   {
     partner: "Book Haven",
     items: [
-      {name: "Science Encyclopedia", price: 39.99, description: "A comprehensive encyclopedia for young scientists.", tag: "Books & Learning Resources", image_url: ""},
-      {name: "Fantasy Novel", price: 19.99, description: "Get lost in an exciting fantasy world with this novel.", tag: "Books & Learning Resources", image_url: ""}
-    ]
-  },
-  {
-    partner: "Experience Explorer",
-    items: [
-      {name: "Skydiving Experience", price: 299.99, description: "Feel the thrill of skydiving with our expert instructors.", tag: "Experiences", image_url: ""},
-      {name: "Cooking Class", price: 89.99, description: "Learn to cook gourmet meals with our top chefs.", tag: "Experiences", image_url: ""}
+      {name: "Science Encyclopedia", price: 6.99, description: "A comprehensive encyclopedia for young scientists.", tag: "Books & Learning Resources", image_url: "https://unsplash.com/photos/zvKx6ixUhWQ/download?ixid=M3wxMjA3fDB8MXxzZWFyY2h8NXx8U2NpZW5jZSUyMEVuY3ljbG9wZWRpYSUyMGJvb2t8ZW58MHx8fHwxNzI3NTU2MTA3fDA&force=true&w=640"},
+      {name: "Fantasy Novel", price: 4.99, description: "Get lost in an exciting fantasy world with this novel.", tag: "Books & Learning Resources", image_url: "https://unsplash.com/photos/SmCkmNjqrjI/download?ixid=M3wxMjA3fDB8MXxzZWFyY2h8MTF8fEZhbnRhc3klMjBOb3ZlbHxlbnwwfHx8fDE3Mjc1NTYxMjl8MA&force=true&w=640"}
     ]
   },
   {
     partner: "Artistic Melody",
     items: [
-      {name: "Acoustic Guitar", price: 199.99, description: "Perfect for aspiring musicians.", tag: "Musical Instruments & Art Supplies", image_url: ""},
-      {name: "Watercolor Set", price: 29.99, description: "Create beautiful paintings with this complete watercolor set.", tag: "Musical Instruments & Art Supplies", image_url: ""}
+      {name: "Acoustic Guitar", price: 199.99, description: "Perfect for aspiring musicians.", tag: "Musical Instruments & Art Supplies", image_url: "https://unsplash.com/photos/bwdRPDr-aHU/download?ixid=M3wxMjA3fDB8MXxzZWFyY2h8M3x8QWNvdXN0aWMlMjBHdWl0YXJ8ZW58MHx8fHwxNzI3NTU2MTk5fDA&force=true&w=640"},
+      {name: "Watercolor Set", price: 29.99, description: "Create beautiful paintings with this complete watercolor set.", tag: "Musical Instruments & Art Supplies", image_url: "https://unsplash.com/photos/TTwwVG4Isjw/download?ixid=M3wxMjA3fDB8MXxzZWFyY2h8OHx8V2F0ZXJjb2xvciUyMHBhaW50cyUyMFNldHxlbnwwfHx8fDE3Mjc1NTYyNDN8MA&force=true&w=640"}
     ]
   },
   {
     partner: "Science Safari",
     items: [
-      {name: "Microscope Kit", price: 69.99, description: "Explore the microscopic world with this microscope kit.", tag: "Science & Exploration Kits", image_url: ""},
-      {name: "Chemical Experiment Set", price: 49.99, description: "Conduct fun and educational experiments with this set.", tag: "Science & Exploration Kits", image_url: ""}
+      {name: "Microscope Kit", price: 69.99, description: "Explore the microscopic world with this microscope kit.", tag: "Science & Exploration Kits", image_url: "https://unsplash.com/photos/JdtUKqGdqw8/download?ixid=M3wxMjA3fDB8MXxzZWFyY2h8MTF8fFNjaWVuY2UlMjBFbmN5Y2xvcGVkaWF8ZW58MHx8fHwxNzI3NTU2MDg4fDA&force=true&w=640"},
+      {name: "Chemical Experiment Set", price: 49.99, description: "Conduct fun and educational experiments with this set.", tag: "Science & Exploration Kits", image_url: "https://unsplash.com/photos/UmncJq4KPcA/download?ixid=M3wxMjA3fDB8MXxzZWFyY2h8NXx8U2NpZW5jZSUyMEVuY3ljbG9wZWRpYXxlbnwwfHx8fDE3Mjc1NTYwODh8MA&force=true&w=640"}
     ]
   }
 ]
