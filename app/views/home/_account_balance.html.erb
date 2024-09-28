@@ -9,6 +9,7 @@
     <style>
         :root {
             --primary-color: #3fb56b; /* Green from the logo */
+            --primary-color-dark: #2d6a4f; /* Darker green from the logo */
             --secondary-color: #009bcf; /* Blue from the logo */
             --accent-color: #ec008c; /* Pink from the logo */
             --highlight-color: #ffc700; /* Yellow from the logo */
@@ -70,10 +71,19 @@
         }
 
         .amount {
-            font-size: 48px;
+            font-size: 42px;
             font-weight: 700;
             color: var(--primary-color);
             margin: 20px 0;
+        }
+
+        .amount2 {
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--primary-color-dark);
+            margin: 20px 0;
+            /* make it a bit transparent */
+            opacity: 0.5;
         }
 
         .progress {
@@ -141,21 +151,29 @@
     <div class="container">
         <div class="dashboard-top">
             <!-- Monthly Summary Card -->
-          <div class="card">
+            <div class="card">
               <div class="summary">
-                  <h2>Monthly Expenses Summary</h2>
-                  <div class="amount">$355 / $400</div>
-                  <div class="progress-info">
-                      <span>Spent: 89%</span>
-                      <span>Remaining: $45</span>
-                  </div>
-                  <div class="progress">
-                      <div class="progress-bar"></div>
-                  </div>
-                  <!-- Add Expense button links to products_path -->
-                  <%= link_to "Add Expense", products_path, class: "button" %>
+                <h2>Monthly Expenses Summary</h2>
+
+                <!-- Flex container for side by side layout -->
+                <div class="flex justify-center items-baseline space-x-2">
+                  <div class="amount">$355</div>
+                  <div class="amount2">/</div>
+                  <div class="amount2">$400</div>
+                </div>
+
+                <div class="progress-info">
+                  <span>Spent: 89%</span>
+                  <span>Remaining: $45</span>
+                </div>
+                <div class="progress">
+                  <div class="progress-bar"></div>
+                </div>
+
+                <!-- Add Expense button links to products_path -->
+                <%= link_to "Add Expense", products_path, class: "button" %>
               </div>
-          </div>
+            </div>
             <!-- Pie Chart Card -->
             <div class="card">
                 <h3>Spending Breakdown</h3>
