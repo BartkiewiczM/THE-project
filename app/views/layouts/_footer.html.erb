@@ -2,25 +2,25 @@
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center">
 
     <!-- Home Icon (Redirect to root_path) -->
-    <%= link_to root_path, class: "flex flex-col items-center text-[#1c4b46] hover:text-gray-700" do %>
+    <%= link_to root_path, class: "flex flex-col items-center text-[#1c4b46] hover:text-gray-700 mb-6" do %>
       <%= image_tag "home-svgrepo-com.svg", alt: "Home", class: "h-6" %>
       <span class="text-xs">Home</span>
     <% end %>
 
     <!-- Partners Icon (Redirect to partners_path) -->
-    <%= link_to partners_path, class: "flex flex-col items-center text-[#1c4b46] hover:text-gray-700" do %>
+    <%= link_to partners_path, class: "flex flex-col items-center text-[#1c4b46] hover:text-gray-700 mb-6" do %>
       <%= image_tag "partners-solid-svgrepo-com.svg", alt: "Partners", class: "h-6" %>
       <span class="text-xs">Partners</span>
     <% end %>
 
     <!-- Products Icon (Redirect to products_path) -->
-    <%= link_to products_path, class: "flex flex-col items-center text-[#1c4b46] hover:text-gray-700" do %>
+    <%= link_to products_path, class: "flex flex-col items-center text-[#1c4b46] hover:text-gray-700 mb-6" do %>
       <%= image_tag "product-svgrepo-com.svg", alt: "Products", class: "h-6" %>
       <span class="text-xs">Products</span>
     <% end %>
 
     <!-- Profile Icon (Redirect to users_path) -->
-    <%= link_to users_path, class: "flex flex-col items-center text-[#1c4b46] hover:text-gray-700" do %>
+    <%= link_to users_path, class: "flex flex-col items-center text-[#1c4b46] hover:text-gray-700 mb-6" do %>
       <%= image_tag "user-circle-svgrepo-com.svg", alt: "Profile", class: "h-6" %>
       <span class="text-xs">Profile</span>
     <% end %>
@@ -28,20 +28,23 @@
   </div>
 </footer>
 
-<!-- Add extra margin at the bottom to avoid obstruction -->
+<!-- Add extra margin for icons inside the footer to avoid obstruction, while keeping footer background to the bottom -->
 <style>
   footer {
-    /* Default padding */
-    padding-bottom: 20px;
-    /* Add extra space for mobile (especially for iPhone swipe up area) */
-    margin-bottom: 10px; /* Half of the previous margin */
-    background-color: #c1dbcc; /* Ensure the background color fills the footer and margin area */
+    /* Ensure the footer itself remains at the bottom of the screen */
+    background-color: #c1dbcc; /* Background color of the footer */
+    padding-bottom: 0; /* No additional padding on the bottom of the footer */
+  }
+
+  /* Add margin only to the icons within the footer */
+  footer a {
+    margin-bottom: 20px; /* Add space above icons to avoid the swipe-up area */
   }
 
   @media (max-width: 768px) {
-    footer {
-      /* For mobile devices, reduce margin to half but still enough for the swipe-up gesture area */
-      margin-bottom: 20px;
+    /* Reduce margin for icons on smaller devices */
+    footer a {
+      margin-bottom: 15px;
     }
   }
 </style>
