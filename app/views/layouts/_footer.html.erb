@@ -34,13 +34,14 @@
     /* Default padding */
     padding-bottom: 20px;
     /* Add extra space for mobile (especially for iPhone swipe up area) */
-    margin-bottom: 20px; /* Ensures enough space below the icons */
+    margin-bottom: 10px; /* Half of the previous margin */
+    background-color: #c1dbcc; /* Ensure the background color fills the footer and margin area */
   }
 
   @media (max-width: 768px) {
     footer {
-      /* For mobile devices, add more margin to ensure space for the swipe-up gesture area */
-      margin-bottom: 40px;
+      /* For mobile devices, reduce margin to half but still enough for the swipe-up gesture area */
+      margin-bottom: 20px;
     }
   }
 </style>
