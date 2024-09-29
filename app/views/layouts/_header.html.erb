@@ -1,7 +1,5 @@
-<header class="bg-[#ffffff] text-white py-8 shadow-md"> <!-- Increased padding on y-axis for more height -->
-  <div class="max-w-full mx-auto px-6 sm:px-8 lg:px-12 flex items-center justify-between h-1"> <!-- Added fixed height -->
-
-    <!-- Burger Menu (if needed, you can uncomment and style it here) -->
+<header class="bg-[#ffffff] text-white py-8 shadow-md">
+  <div class="max-w-full mx-auto px-6 sm:px-8 lg:px-12 flex items-center justify-between h-1"> <!-- Container with flexbox -->
 
     <!-- Logo and App Name in the Center -->
     <div class="absolute left-1/2 transform -translate-x-1/2">
@@ -11,5 +9,11 @@
       <% end %>
     </div>
 
+    <!-- Shopping Cart Icon (Right Corner) -->
+    <div class="ml-auto"> <!-- Align to the right -->
+      <%= link_to cart_items_path, class: "flex items-center" do %>
+        <%= image_tag "cart-shopping-fast-svgrepo-com.svg", alt: "Cart", class: "h-8 w-8 text-black hover:text-gray-600" %>
+      <% end %>
+    </div>
   </div>
 </header>
