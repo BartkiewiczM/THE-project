@@ -1,4 +1,6 @@
 # db/seeds.rb
+
+CartItem.destroy_all
 UserPurchase.destroy_all
 Product.destroy_all
 Partner.destroy_all
