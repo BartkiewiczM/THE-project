@@ -29,7 +29,7 @@ class CartItemsController < ApplicationController
           turbo_stream.remove("cart_item_#{@cart_item.id}"),
           turbo_stream.replace("total-value", sprintf("%.2f", @total_price) + " zł"),
           turbo_stream.replace("tax-value", sprintf("%.2f", @total_price * 0.23) + " zł"),
-          turbo_stream.replace("subtotal-value",  sprintf("%.2f", @total_price - @total_price * 0.23)),
+          turbo_stream.replace("subtotal-value",  sprintf("%.2f", @total_price - @total_price * 0.23) + " zł"),
           @cart_items.count == 0 ? turbo_stream.replace("products-list", partial: "empty_list") : ""
         ]
       end

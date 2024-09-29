@@ -9,8 +9,10 @@ class ProductsController < ApplicationController
     end
 
     # Handle filtering by tags
+    @present_tag = nil
     if params[:tag].present?
       @products = @products.select { |s| s[:tag].eql?(params[:tag]) }
+      @present_tag = params[:tag]
     end
 
     # Available tags for filtering
