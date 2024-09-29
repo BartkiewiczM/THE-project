@@ -50,7 +50,7 @@ export default class extends Controller {
             }
           }
         },
-        cutout: '70%'  // Defines the size of the center cutout
+        cutout: '85%'  // Defines the size of the center cutout
       }
     });
   }
