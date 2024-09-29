@@ -1,175 +1,168 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shwappie Dashboard</title>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.min.js"></script>
-    <style>
-        :root {
-            --primary-color: #3fb56b;
-            --primary-color-dark: #2d6a4f;
-            --secondary-color: #009bcf;
-            --accent-color: #ec008c;
-            --highlight-color: #ffc700;
-            --text-color: #2c3e50;
-            --background-color: #ffffff;
-            --card-background: #ffffff;
-            --border-radius: 12px;
-            --box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
-            --transition: all 0.3s ease;
-        }
+<% content_for :head do %>
+  <style>
+      :root {
+          --primary-color: #3fb56b;
+          --primary-color-dark: #2d6a4f;
+          --secondary-color: #009bcf;
+          --accent-color: #ec008c;
+          --highlight-color: #ffc700;
+          --text-color: #2c3e50;
+          --background-color: #ffffff;
+          --card-background: #ffffff;
+          --border-radius: 12px;
+          --box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+          --transition: all 0.3s ease;
+      }
 
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
+      * {
+          box-sizing: border-box;
+          margin: 0;
+          padding: 0;
+      }
 
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: var(--background-color);
-            color: var(--text-color);
-            line-height: 1.6;
-        }
+      body {
+          font-family: 'Inter', sans-serif;
+          background-color: var(--background-color);
+          color: var(--text-color);
+          line-height: 1.6;
+      }
 
-        .container {
-            max-width: 100%;
-            margin: auto;
-            padding: 0 20px; /* Added padding on the sides */
-        }
+      .container {
+          max-width: 100%;
+          margin: auto;
+          padding: 0 20px; /* Added padding on the sides */
+      }
 
-        .dashboard-top {
-            display: grid;
-            grid-template-columns: 2fr 1fr;
-            gap: 30px;
-            margin-bottom: 40px;
-            width: 100%; /* Ensures the dashboard takes up full width */
-        }
+      .dashboard-top {
+          display: grid;
+          grid-template-columns: 2fr 1fr;
+          gap: 30px;
+          margin-bottom: 40px;
+          width: 100%; /* Ensures the dashboard takes up full width */
+      }
 
-        @media (max-width: 768px) {
-            .dashboard-top {
-                grid-template-columns: 1fr;
-            }
-        }
+      @media (max-width: 768px) {
+          .dashboard-top {
+              grid-template-columns: 1fr;
+          }
+      }
 
-        .card {
-            background-color: var(--card-background);
-            border-radius: var(--border-radius);
-            padding: 30px;
-            box-shadow: var(--box-shadow);
-            transition: var(--transition);
-            width: 100%; /* Full width for cards */
-        }
+      .card {
+          background-color: var(--card-background);
+          border-radius: var(--border-radius);
+          padding: 30px;
+          box-shadow: var(--box-shadow);
+          transition: var(--transition);
+          width: 100%; /* Full width for cards */
+      }
 
-        .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 6px 30px rgba(0, 0, 0, 0.15);
-        }
+      .card:hover {
+          transform: translateY(-5px);
+          box-shadow: 0 6px 30px rgba(0, 0, 0, 0.15);
+      }
 
-        .summary {
-            text-align: center;
-        }
+      .summary {
+          text-align: center;
+      }
 
-        /* Flex container to keep amounts side by side */
-        .flex-amounts {
-            display: flex;
-            justify-content: center;
-            align-items: baseline;
-            gap: 10px;
-            max-width: 100%; /* Ensures no overflow */
-            white-space: nowrap; /* Prevents text wrapping */
-            flex-shrink: 1; /* Allows shrinking if needed */
-        }
+      /* Flex container to keep amounts side by side */
+      .flex-amounts {
+          display: flex;
+          justify-content: center;
+          align-items: baseline;
+          gap: 10px;
+          max-width: 100%; /* Ensures no overflow */
+          white-space: nowrap; /* Prevents text wrapping */
+          flex-shrink: 1; /* Allows shrinking if needed */
+      }
 
-        .amount {
-            font-size: 3.5vw; /* Dynamic size based on viewport width */
-            font-weight: 700;
-            color: var(--primary-color);
-        }
+      .amount {
+          font-size: 3.5vw; /* Dynamic size based on viewport width */
+          font-weight: 700;
+          color: var(--primary-color);
+      }
 
-        .amount2 {
-            font-size: 2.5vw; /* Dynamic size based on viewport width */
-            font-weight: 700;
-            color: var(--primary-color-dark);
-            opacity: 0.5;
-        }
+      .amount2 {
+          font-size: 2.5vw; /* Dynamic size based on viewport width */
+          font-weight: 700;
+          color: var(--primary-color-dark);
+          opacity: 0.5;
+      }
 
-        /* Ensures the amount doesn't become too small on very small screens */
-        @media (max-width: 500px) {
-            .amount {
-                font-size: 24px; /* Minimum font size */
-            }
+      /* Ensures the amount doesn't become too small on very small screens */
+      @media (max-width: 500px) {
+          .amount {
+              font-size: 24px; /* Minimum font size */
+          }
 
-            .amount2 {
-                font-size: 18px; /* Minimum font size */
-            }
-        }
+          .amount2 {
+              font-size: 18px; /* Minimum font size */
+          }
+      }
 
-        .progress {
-            width: 100%;
-            height: 12px;
-            background-color: var(--secondary-color);
-            border-radius: 6px;
-            overflow: hidden;
-            margin-bottom: 20px;
-        }
+      .progress {
+          width: 100%;
+          height: 12px;
+          background-color: var(--secondary-color);
+          border-radius: 6px;
+          overflow: hidden;
+          margin-bottom: 20px;
+      }
 
-        .progress-bar {
-            width: <%= @spent_percentage %>%;
-            height: 100%;
-            background-color: var(--accent-color);
-            border-radius: 6px;
-            transition: width 0.5s ease-in-out;
-        }
+      .progress-bar {
+          width: <%= @spent_percentage %>%;
+          height: 100%;
+          background-color: var(--accent-color);
+          border-radius: 6px;
+          transition: width 0.5s ease-in-out;
+      }
 
-        .button {
-            display: inline-block;
-            padding: 14px 28px;
-            background-color: var(--highlight-color);
-            color: #fff;
-            text-decoration: none;
-            border-radius: 30px;
-            font-weight: 600;
-            transition: var(--transition);
-            border: none;
-            cursor: pointer;
-        }
+      .button {
+          display: inline-block;
+          padding: 14px 28px;
+          background-color: var(--highlight-color);
+          color: #fff;
+          text-decoration: none;
+          border-radius: 30px;
+          font-weight: 600;
+          transition: var(--transition);
+          border: none;
+          cursor: pointer;
+      }
 
-        .button:hover {
-            background-color: #ffa500;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 15px rgba(255, 199, 0, 0.4);
-        }
+      .button:hover {
+          background-color: #ffa500;
+          transform: translateY(-2px);
+          box-shadow: 0 4px 15px rgba(255, 199, 0, 0.4);
+      }
 
-        h2, h3 {
-            color: var(--text-color);
-            font-weight: 600;
-            margin-bottom: 10px;
-        }
+      h2, h3 {
+          color: var(--text-color);
+          font-weight: 600;
+          margin-bottom: 10px;
+      }
 
-        #pieChart {
-            max-width: 100%;
-            max-height: 300px;
-        }
+      #pieChart {
+          max-width: 100%;
+          max-height: 300px;
+      }
 
-        .chart-container {
-            position: relative;
-            height: 300px;
-            width: 100%; /* Ensures chart container takes up full width */
-        }
+      .chart-container {
+          position: relative;
+          height: 300px;
+          width: 100%; /* Ensures chart container takes up full width */
+      }
 
-        .progress-info {
-            display: flex;
-            justify-content: space-between;
-            font-size: 14px;
-            color: var(--text-color);
-            margin-bottom: 10px;
-        }
-    </style>
-</head>
-<body>
+      .progress-info {
+          display: flex;
+          justify-content: space-between;
+          font-size: 14px;
+          color: var(--text-color);
+          margin-bottom: 10px;
+      }
+  </style>
+<% end %>
+
     <div class="container">
         <div class="dashboard-top">
             <!-- Monthly Summary Card -->
@@ -198,7 +191,7 @@
             </div>
 
             <!-- Pie Chart Card -->
-            <div class="card">
+            <div class="card" data-controller="chart">
                 <h3>Spending Breakdown</h3>
                 <div class="chart-container">
                     <canvas id="pieChart"></canvas>
@@ -207,54 +200,3 @@
         </div>
     </div>
 
-    <!-- Script to initialize Chart.js when Turbo loads -->
-    <script>
-        function initializeChart() {
-            const ctx = document.getElementById('pieChart').getContext('2d');
-            new Chart(ctx, {
-                type: 'doughnut',
-                data: {
-                    labels: ['Entertainment', 'Tools', 'Toys'],
-                    datasets: [{
-                        data: [30, 60, 10],  // Values in percentages
-                        backgroundColor: [
-                            '#10B981',  /* Entertainment - Green */
-                            '#3B82F6',  /* Tools - Blue */
-                            '#F59E0B'   /* Toys - Yellow */
-                        ]
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    plugins: {
-                        legend: {
-                            position: 'bottom',
-                        },
-                        title: {
-                            display: true,
-                            text: 'Spending Categories',
-                            color: '#3fb56b',
-                            font: {
-                                size: 16,
-                                weight: 'bold'
-                            }
-                        }
-                    },
-                    cutout: '70%'
-                }
-            });
-        }
-
-        // Listen for the turbo:load event to ensure the chart is reinitialized after navigation
-        document.addEventListener('turbo:load', function() {
-            initializeChart();
-        });
-
-        // Optionally, run the script when the page loads for the first time
-        document.addEventListener('DOMContentLoaded', function() {
-            initializeChart();
-        });
-    </script>
-</body>
-</html>
