@@ -30,7 +30,7 @@
       .container {
           max-width: 100%;
           margin: auto;
-          padding: 0 20px; /* Added padding on the sides */
+          /*padding: 0 20px; !* Added padding on the sides *!*/
       }
 
       .dashboard-top {
@@ -163,40 +163,65 @@
   </style>
 <% end %>
 
-    <div class="container">
-        <div class="dashboard-top">
-            <!-- Monthly Summary Card -->
-            <div class="card">
-              <div class="summary">
-                <h2>Monthly Expenses Summary</h2>
-
-                <!-- Flex container for side-by-side layout with responsive text scaling -->
-                <div class="flex-amounts">
-                  <div class="amount"><%= number_to_currency(@total_expenses, precision: 2) %></div>
-                  <div class="amount2">/</div>
-                  <div class="amount2"><%= number_to_currency(@monthly_limit, precision: 2) %></div>
-                </div>
-
-                <div class="progress-info">
-                  <span>Spent: <%= @spent_percentage %>%</span>
-                  <span>Remaining: <%= number_to_currency(@remaining_funds, precision: 2) %></span>
-                </div>
-                <div class="progress">
-                  <div class="progress-bar"></div>
-                </div>
-
-                <!-- Add Expense button links to products_path -->
-                <%= link_to "Add Expense", products_path, class: "button" %>
+<div class="container">
+  <div class="dashboard-top">
+    <!-- Monthly Summary Card -->
+    <div class="card">
+      <div class="flex items-center justify-center mb-6">
+        <div class="w-72 h-44 bg-gradient-to-br from-gray-700 via-gray-800 to-gray-900 rounded-xl shadow-2xl overflow-hidden relative">
+          <div class="w-full h-full flex flex-col justify-between p-6 text-gray-100">
+            <div class="flex justify-between items-start">
+              <div class="flex flex-col">
+                <span class="text-xs font-light text-gray-300">Card Number</span>
+                <span class="text-xl font-mono tracking-wider">Ending 4242</span>
+              </div>
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-12 h-12 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"/>
+              </svg>
+            </div>
+            <div class="flex justify-between items-end">
+              <div class="flex flex-col">
+                <span class="text-xs font-light text-gray-300">Card Holder</span>
+                <span class="text-lg font-semibold">JOHN DOE</span>
+              </div>
+              <div class="flex flex-col items-end">
+                <span class="text-xs font-light text-gray-300">Expires</span>
+                <span class="text-lg font-semibold">12/25</span>
               </div>
             </div>
-
-            <!-- Pie Chart Card -->
-            <div class="card" data-controller="chart">
-                <h3>Spending Breakdown</h3>
-                <div class="chart-container">
-                    <canvas id="pieChart"></canvas>
-                </div>
-            </div>
+          </div>
         </div>
+      </div>
+      <div class="summary">
+        <h2>Monthly Expenses Summary</h2>
+
+        <!-- Flex container for side-by-side layout with responsive text scaling -->
+        <div class="flex-amounts">
+          <div class="amount"><%= number_to_currency(@total_expenses, precision: 2) %></div>
+          <div class="amount2">/</div>
+          <div class="amount2"><%= number_to_currency(@monthly_limit, precision: 2) %></div>
+        </div>
+
+        <div class="progress-info">
+          <span>Spent: <%= @spent_percentage %>%</span>
+          <span>Remaining: <%= number_to_currency(@remaining_funds, precision: 2) %></span>
+        </div>
+        <div class="progress">
+          <div class="progress-bar"></div>
+        </div>
+
+        <!-- Add Expense button links to products_path -->
+        <%= link_to "Add Expense", products_path, class: "button" %>
+      </div>
     </div>
+
+    <!-- Pie Chart Card -->
+    <div class="card" data-controller="chart">
+      <h3>Spending Breakdown</h3>
+      <div class="chart-container">
+        <canvas id="pieChart"></canvas>
+      </div>
+    </div>
+  </div>
+</div>
 
