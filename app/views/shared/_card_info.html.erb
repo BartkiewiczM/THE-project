@@ -4,7 +4,7 @@
     <img src="<%= asset_path('mock-card-image.svg') %>" alt="Card" class="h-20 w-full object-cover rounded-md mb-4">
 
     <!-- User Information (mocked with total funds and expenses) -->
-    <p class="text-gray-700 font-bold">Total Funds: <%= number_to_currency(@monthly_limit, precision: 2) %></p>
-    <p class="text-gray-700">Total Expenses: <%= number_to_currency(@total_expenses, precision: 2) %></p>
+    <p class="text-gray-700 font-bold">Total Funds: <%= number_to_currency(@monthly_limit, precision: 2, unit: "zł", format: "%n %u") %></p>
+    <p class="text-gray-700">Total Expenses: <%= number_to_currency(@total_expenses, precision: 2, unit: "zł", format: "%n %u") %></p>
   </div>
 </div>

@@ -13,7 +13,7 @@
         <div class="bg-gray-100 p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300">
           <div class="flex items-center justify-between">
             <h3 class="text-xl font-semibold text-gray-800"><%= product.name %></h3>
-            <span class="text-lg font-medium text-gray-600"><%= number_to_currency(product.price, precision: 2) %></span>
+            <span class="text-lg font-medium text-gray-600"><%= number_to_currency(product.price, precision: 2, unit: "zł", format: "%n %u") %></span>
           </div>
 
           <!-- Mocking time left for rental purposes -->

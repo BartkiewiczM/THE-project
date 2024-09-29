@@ -3,7 +3,7 @@
   <!-- Monthly Spending Limit Section -->
   <div class="bg-white shadow-lg rounded-lg p-6 mb-8">
     <h2 class="text-2xl font-semibold text-gray-800">Set Monthly Spending Limit</h2>
-    <p class="text-gray-600 mt-2">Current Limit: <%= number_to_currency(@monthly_limit, precision: 2) %></p>
+    <p class="text-gray-600 mt-2">Current Limit: <%= number_to_currency(@monthly_limit, precision: 2, unit: "zł", format: "%n %u") %></p>
 
     <!-- Form to update monthly limit -->
     <form action="<%= set_limit_users_path %>" method="post" class="mt-4">
@@ -30,7 +30,7 @@
   <!-- Expense Overview Section -->
   <div class="bg-white shadow-lg rounded-lg p-6 mb-8">
     <h2 class="text-2xl font-semibold text-gray-800">Current Expenses</h2>
-    <p class="text-gray-600 mt-2">You have spent <%= number_to_currency(@total_expenses, precision: 2) %> this month.</p>
+    <p class="text-gray-600 mt-2">You have spent <%= number_to_currency(@total_expenses, precision: 2, unit: "zł", format: "%n %u") %> this month.</p>
   </div>
 
   <!-- Active Rentals Section -->
@@ -42,7 +42,7 @@
         <% product = rental.product %>
         <div class="bg-gray-100 p-4 rounded-lg shadow-md">
           <h3 class="text-xl font-semibold text-gray-800"><%= product.name %></h3>
-          <p class="text-gray-600">Price: <%= number_to_currency(product.price, precision: 2) %></p>
+          <p class="text-gray-600">Price: <%= number_to_currency(product.price, precision: 2, unit: "zł", format: "%n %u") %></p>
 
           <!-- Display remaining rental time (mocked as a random date for now) -->
           <% time_left = (Time.now + rand(1..30).days) %>

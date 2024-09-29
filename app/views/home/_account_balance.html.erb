@@ -195,14 +195,14 @@
 
         <!-- Flex container for side-by-side layout with responsive text scaling -->
         <div class="flex-amounts">
-          <div class="amount"><%= number_to_currency(@total_expenses, precision: 2) %></div>
+          <div class="amount"><%= number_to_currency(@total_expenses, precision: 2, unit: "zł", format: "%n %u") %></div>
           <div class="amount2">/</div>
-          <div class="amount2"><%= number_to_currency(@monthly_limit, precision: 2) %></div>
+          <div class="amount2"><%= number_to_currency(@monthly_limit, precision: 2, unit: "zł", format: "%n %u") %></div>
         </div>
 
         <div class="progress-info">
           <span>Spent: <%= @spent_percentage %>%</span>
-          <span>Remaining: <%= number_to_currency(@remaining_funds, precision: 2) %></span>
+          <span>Remaining: <%= number_to_currency(@remaining_funds, precision: 2, unit: "zł", format: "%n %u") %></span>
         </div>
         <div class="progress">
           <div class="progress-bar"></div>
