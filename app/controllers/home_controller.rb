@@ -3,16 +3,10 @@ class HomeController < ApplicationController
     # Example account balance
     @account_balance = 150.75
 
-    # Example subscription data
-    @products = [
-      { name: 'Netflix', cost: 15.99, billing_cycle: 'Monthly', next_payment: Date.today + 30 },
-      { name: 'HBO Max', cost: 14.99, billing_cycle: 'Monthly', next_payment: Date.today + 28 },
-      { name: 'Amazon Prime Video', cost: 12.99, billing_cycle: 'Monthly', next_payment: Date.today + 27 }
-    ]
+    # Assuming the current user is the first user for now
+    @user = User.first
 
-    @user = User.first # Assuming the current user is the first user for now.
-
-    # Monthly spending limit is stored in the total_funds field.
+    # Monthly spending limit stored in total_funds field.
     @monthly_limit = @user.total_funds
 
     # Total expenses calculation (based on the user_purchases and product prices).

@@ -2,43 +2,39 @@
   <!-- Render Account Balance Partial -->
   <%= render 'account_balance' %>
 
-  <!-- Active Subscriptions Section -->
+  <!-- Active Rentals Section -->
   <div class="bg-white shadow rounded-lg p-6 mb-8">
-    <h2 class="text-2xl font-semibold text-gray-800 mb-6">Active Subscriptions</h2>
+    <h2 class="text-2xl font-semibold text-gray-800 mb-6">Active Rentals</h2>
 
-    <!-- Subscription Cards -->
+    <!-- Active Rental Cards -->
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-      <!-- Mocked Subscription Cards -->
-      <div class="bg-gray-100 p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300">
-        <div class="flex items-center justify-between">
-          <h3 class="text-xl font-semibold text-gray-800">Netflix</h3>
-          <span class="text-lg font-medium text-gray-600">$15.99</span>
-        </div>
-        <p class="text-gray-500 mt-2">Billing: Monthly</p>
-        <p class="text-gray-500">Next payment: October 30, 2024</p>
-      </div>
+      <% @active_rentals.each do |rental| %>
+        <% product = rental.product %>
+        <div class="bg-gray-100 p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300">
+          <div class="flex items-center justify-between">
+            <h3 class="text-xl font-semibold text-gray-800"><%= product.name %></h3>
+            <span class="text-lg font-medium text-gray-600"><%= number_to_currency(product.price, precision: 2) %></span>
+          </div>
 
-      <div class="bg-gray-100 p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300">
-        <div class="flex items-center justify-between">
-          <h3 class="text-xl font-semibold text-gray-800">HBO Max</h3>
-          <span class="text-lg font-medium text-gray-600">$14.99</span>
-        </div>
-        <p class="text-gray-500 mt-2">Billing: Monthly</p>
-        <p class="text-gray-500">Next payment: October 28, 2024</p>
-      </div>
+          <!-- Mocking time left for rental purposes -->
+          <% time_left = (Time.now + rand(1..30).days) %>
+          <p class="text-gray-500 mt-2">Return in: <%= time_ago_in_words(time_left) %> left</p>
 
-      <div class="bg-gray-100 p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300">
-        <div class="flex items-center justify-between">
-          <h3 class="text-xl font-semibold text-gray-800">Amazon Prime Video</h3>
-          <span class="text-lg font-medium text-gray-600">$12.99</span>
+          <!-- Progress bar visualizing the time left -->
+          <div class="w-full bg-gray-200 h-2 mt-2 rounded-full">
+            <div class="bg-blue-500 h-2 rounded-full" style="width: <%= rand(30..100) %>%"></div>
+          </div>
+
+          <!-- Action buttons -->
+          <div class="mt-4 flex space-x-2">
+            <button class="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600">Extend Rental</button>
+            <button class="border border-blue-500 text-blue-500 px-4 py-2 rounded-lg hover:bg-blue-100">Return</button>
+          </div>
         </div>
-        <p class="text-gray-500 mt-2">Billing: Monthly</p>
-        <p class="text-gray-500">Next payment: October 27, 2024</p>
-      </div>
+      <% end %>
     </div>
   </div>
-
-  <!-- Active Investments Section -->
+<!-- Active Investments Section -->
   <div class="bg-white shadow rounded-lg p-6">
     <h2 class="text-2xl font-semibold text-gray-800 mb-6">Active Investments</h2>
 
