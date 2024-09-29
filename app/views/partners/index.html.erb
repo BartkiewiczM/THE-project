@@ -25,7 +25,7 @@
   <!-- Main Content Section (Slimmer and Centered) -->
 <main class="flex-1 p-8">
   <div class="max-w-screen-md mx-auto">
-    <p class="md:hidden text-base mb-6"><%= @selected_tag.present? ? @selected_tag : "All Partners" %></p>
+    <p class="md:hidden text-base mb-6"><%= @selected_tag.present? ? @selected_tag : "All Shops" %></p>
     <% if @filtered_partners.any? %>
       <div class="space-y-6">
         <% @filtered_partners.each do |partner| %>
