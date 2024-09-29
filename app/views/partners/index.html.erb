@@ -23,22 +23,36 @@
   </aside>
 
   <!-- Main Content Section (Slimmer and Centered) -->
-  <main class="flex-1 p-8">
-    <div class="max-w-screen-md mx-auto">
-      <p class="md:hidden text-base mb-6"><%= @selected_tag.present? ? @selected_tag : "All Partners" %></p>
-      <% if @filtered_partners.any? %>
-        <div class="space-y-6">
-          <% @filtered_partners.each do |partner| %>
-            <div class="bg-white shadow-lg rounded-lg p-6">
-              <h3 class="text-xl font-semibold"><%= partner.name %></h3>
-              <p class="text-gray-600"><%= partner.description %></p>
-              <button class="mt-4 bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600">Rent Now</button>
+<main class="flex-1 p-8">
+  <div class="max-w-screen-md mx-auto">
+    <p class="md:hidden text-base mb-6"><%= @selected_tag.present? ? @selected_tag : "All Partners" %></p>
+    <% if @filtered_partners.any? %>
+      <div class="space-y-6">
+        <% @filtered_partners.each do |partner| %>
+          <div class="bg-white shadow-lg rounded-lg p-6">
+            <h3 class="text-xl font-semibold"><%= partner.name %></h3>
+            <p class="text-gray-600"><%= partner.description %></p>
+
+            <!-- Flex container for buttons -->
+            <div class="flex justify-between mt-4 space-x-2">
+              <!-- Left button (Solid) -->
+              <button class="bg-blue-500 text-white px-3 py-2 rounded-lg hover:bg-blue-600 flex-shrink-0">
+                Go to website
+              </button>
+
+              <!-- Right button (Outline) -->
+              <button class="bg-transparent text-blue-500 border border-blue-500 px-3 py-2 rounded-lg hover:bg-blue-500 hover:text-white flex-shrink-0">
+                Show location
+              </button>
             </div>
-          <% end %>
-        </div>
-      <% else %>
-        <p class="text-gray-600">No partners available for this tag.</p>
-      <% end %>
-    </div>
-  </main>
+          </div>
+        <% end %>
+      </div>
+    <% else %>
+      <p class="text-gray-600">No partners available for this tag.</p>
+    <% end %>
+  </div>
+</main>
+
+
 </div>
