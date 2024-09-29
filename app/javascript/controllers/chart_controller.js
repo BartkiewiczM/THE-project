@@ -22,10 +22,12 @@ export default class extends Controller {
         datasets: [{
           data: [30, 60, 10],  // Values in percentages
           backgroundColor: [
-            '#10B981',  /* Entertainment - Green */
-            '#3B82F6',  /* Tools - Blue */
-            '#F59E0B'   /* Toys - Yellow */
-          ]
+            '#FFB6C1',  /* Light Pink for Entertainment */
+            '#B0E0E6',  /* Pastel Blue for Tools */
+            '#FFDAB9'   /* Peach Puff for Toys */
+          ],
+          borderColor: '#ffffff', // Adds white border between slices for better separation
+          borderWidth: 1,
         }]
       },
       options: {
@@ -34,18 +36,21 @@ export default class extends Controller {
         plugins: {
           legend: {
             position: 'bottom',
+            labels: {
+              color: '#000000',  // Legend text color black
+            }
           },
           title: {
             display: true,
             text: 'Spending Categories',
-            color: '#3fb56b',
+            color: '#000000',  // Title text color black
             font: {
               size: 16,
               weight: 'bold'
             }
           }
         },
-        cutout: '70%'
+        cutout: '70%'  // Defines the size of the center cutout
       }
     });
   }

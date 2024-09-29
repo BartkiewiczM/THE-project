@@ -1,12 +1,12 @@
 <% content_for :head do %>
   <style>
       :root {
-          --primary-color: #3fb56b;
-          --primary-color-dark: #2d6a4f;
-          --secondary-color: #009bcf;
-          --accent-color: #ec008c;
-          --highlight-color: #ffc700;
-          --text-color: #2c3e50;
+          --primary-color: #000000;
+          --primary-color-dark: #000000;
+          --secondary-color: #d5d5d5;
+          --accent-color: #000000;
+          --highlight-color: #000000;
+          --text-color: #000000;
           --background-color: #ffffff;
           --card-background: #ffffff;
           --border-radius: 12px;
@@ -131,7 +131,7 @@
       }
 
       .button:hover {
-          background-color: #ffa500;
+          background-color: #000000;
           transform: translateY(-2px);
           box-shadow: 0 4px 15px rgba(255, 199, 0, 0.4);
       }
@@ -217,11 +217,9 @@
 
     <!-- Pie Chart Card -->
     <div class="card" data-controller="chart">
-      <h3>Spending Breakdown</h3>
       <div class="chart-container">
         <canvas id="pieChart"></canvas>
       </div>
     </div>
   </div>
 </div>
-
