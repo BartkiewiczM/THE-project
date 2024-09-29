@@ -22,13 +22,16 @@
 
           <!-- Progress bar visualizing the time left -->
           <div class="w-full bg-gray-200 h-2 mt-2 rounded-full">
-            <div class="bg-blue-500 h-2 rounded-full" style="width: <%= rand(30..100) %>%"></div>
+            <div class="bg-black h-2 rounded-full" style="width: <%= rand(30..100) %>%"></div>
           </div>
 
           <!-- Action buttons -->
           <div class="mt-4 flex space-x-2">
-            <button class="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600">Extend Rental</button>
-            <button class="border border-blue-500 text-blue-500 px-4 py-2 rounded-lg hover:bg-blue-100">Return</button>
+            <!-- Black button with white text -->
+            <button class="bg-black text-white px-4 py-2 rounded-lg hover:bg-gray-800">Extend Rental</button>
+
+            <!-- Black outlined button -->
+            <button class="border border-black text-black px-4 py-2 rounded-lg hover:bg-gray-100">Return</button>
           </div>
         </div>
       <% end %>
