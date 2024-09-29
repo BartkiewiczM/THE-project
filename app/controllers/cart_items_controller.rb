@@ -2,6 +2,17 @@ class CartItemsController < ApplicationController
   def index
     @cart_items = User.first.cart_items
     @total_price = @cart_items.map(&:product).map(&:price).reduce(:+)
+
+    @user = User.first
+    @monthly_limit = @user.total_funds
+
+    # Total expenses calculation (based on the user_purchases and product prices).
+    @total_expenses = @user.user_purchases.joins(:product).sum("products.price")
+
+    # Calculate the percentage of spending.
+    @spent_percentage = (@total_expenses.to_f / @monthly_limit * 100).round(2)
+    @remaining_funds = (@monthly_limit - @total_expenses).round(2)
+
     render :index, layout: "application"
   end
 
