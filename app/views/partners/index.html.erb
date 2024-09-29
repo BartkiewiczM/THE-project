@@ -1,23 +1,23 @@
 <div class="flex min-h-screen bg-gray-100" data-controller="partners-sidebar">
   <!-- Sidebar Toggle Button for Small Screens -->
-  <button class="p-4 absolute z-20 transform md:hidden" data-action="click->partners-sidebar#toggle">
+  <button class="p-4 absolute z-20 transform md:hidden" style="top: 95px; left: 0;" data-action="click->partners-sidebar#toggle">
     <!-- Arrow Icon -->
     <svg class="w-6 h-6" data-partners-sidebar-target="arrowIcon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
     </svg>
   </button>
 
-  <!-- Sidebar with Sections (Filters) -->
+  <!-- Sidebar with Tags (Filters) -->
   <aside class="w-64 bg-white p-6 shadow-lg absolute md:static z-10 transform -translate-x-full md:translate-x-0 transition-transform duration-300 ease-in-out" data-partners-sidebar-target="sidebar">
-    <h2 class="text-lg font-semibold mb-4">Categories</h2>
+    <h2 class="text-lg font-semibold mb-4 mt-4">Categories</h2>
     <ul class="space-y-3">
-      <% @partners.keys.each do |category| %>
+      <% @tags.each do |tag| %>
         <li>
-          <%= link_to category, partners_path(category: category), class: "block py-2 px-4 rounded-lg hover:bg-gray-200 #{'bg-blue-500 text-white' if @selected_category == category}" %>
+          <%= link_to tag, partners_path(tag: tag), class: "block py-2 px-4 rounded-lg hover:bg-gray-200 #{'bg-blue-500 text-white' if @selected_tag == tag}" %>
         </li>
       <% end %>
       <li>
-        <%= link_to "All Categories", partners_path, class: "block py-2 px-4 rounded-lg hover:bg-gray-200 #{'bg-blue-500 text-white' unless @selected_category}" %>
+        <%= link_to "All Tags", partners_path, class: "block py-2 px-4 rounded-lg hover:bg-gray-200 #{'bg-blue-500 text-white' unless @selected_tag}" %>
       </li>
     </ul>
   </aside>
@@ -25,20 +25,19 @@
   <!-- Main Content Section (Slimmer and Centered) -->
   <main class="flex-1 p-8">
     <div class="max-w-screen-md mx-auto">
-      <h1 class="text-3xl font-bold md:mb-6">Partners</h1>
-      <p class="md:hidden text-base mb-6"><%=@selected_category %></p>
+      <p class="md:hidden text-base mb-6"><%= @selected_tag.present? ? @selected_tag : "All Partners" %></p>
       <% if @filtered_partners.any? %>
         <div class="space-y-6">
           <% @filtered_partners.each do |partner| %>
             <div class="bg-white shadow-lg rounded-lg p-6">
-              <h3 class="text-xl font-semibold"><%= partner[:name] %></h3>
-              <p class="text-gray-600"><%= partner[:description] %></p>
+              <h3 class="text-xl font-semibold"><%= partner.name %></h3>
+              <p class="text-gray-600"><%= partner.description %></p>
               <button class="mt-4 bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600">Rent Now</button>
             </div>
           <% end %>
         </div>
       <% else %>
-        <p class="text-gray-600">No partners available for this category.</p>
+        <p class="text-gray-600">No partners available for this tag.</p>
       <% end %>
     </div>
   </main>
