@@ -117,25 +117,6 @@
           transition: width 0.5s ease-in-out;
       }
 
-      .button {
-          display: inline-block;
-          padding: 14px 28px;
-          background-color: var(--highlight-color);
-          color: #fff;
-          text-decoration: none;
-          border-radius: 30px;
-          font-weight: 600;
-          transition: var(--transition);
-          border: none;
-          cursor: pointer;
-      }
-
-      .button:hover {
-          background-color: #000000;
-          transform: translateY(-2px);
-          box-shadow: 0 4px 15px rgba(255, 199, 0, 0.4);
-      }
-
       h2, h3 {
           color: var(--text-color);
           font-weight: 600;
@@ -194,7 +175,7 @@
         <h2>Monthly Expenses Summary</h2>
 
         <!-- Flex container for side-by-side layout with responsive text scaling -->
-        <div class="flex-amounts">
+        <div class="flex-amounts mt-2 mb-4">
           <div class="amount"><%= number_to_currency(@total_expenses, precision: 2, unit: "zł", format: "%n %u") %></div>
           <div class="amount2">/</div>
           <div class="amount2"><%= number_to_currency(@monthly_limit, precision: 2, unit: "zł", format: "%n %u") %></div>
@@ -204,12 +185,13 @@
           <span>Spent: <%= @spent_percentage %>%</span>
           <span>Remaining: <%= number_to_currency(@remaining_funds, precision: 2, unit: "zł", format: "%n %u") %></span>
         </div>
-        <div class="progress">
+        <div class="progress mb-8">
           <div class="progress-bar"></div>
         </div>
 
         <!-- Add Expense button links to products_path -->
-        <%= link_to "Add Expense", products_path, class: "button" %>
+        <%= link_to "New Rent", products_path, class: "button border border-black bg-black text-white px-4 py-2 rounded-lg hover:bg-gray-800" %>
+        <%= link_to "Add Balance", users_path, class: "button border border-black text-black px-4 py-2 rounded-lg hover:bg-gray-100 ml-2" %>
       </div>
     </div>
 
