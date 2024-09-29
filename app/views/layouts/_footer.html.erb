@@ -1,26 +1,26 @@
 <footer class="fixed bottom-0 left-0 right-0 w-full bg-[#c1dbcc] text-[#1c4b46] py-2 shadow-inner">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center">
+  <div class="max-w-7xl mx-auto px-10 sm:px-12 lg:px-14 flex justify-between items-center">
 
     <!-- Home Icon (Redirect to root_path) -->
-    <%= link_to root_path, class: "flex flex-col items-center text-[#1c4b46] hover:text-gray-700 mb-6" do %>
+    <%= link_to root_path, class: "flex flex-col items-center text-[#1c4b46] hover:text-gray-700 mb-3" do %>
       <%= image_tag "home-svgrepo-com.svg", alt: "Home", class: "h-6" %>
       <span class="text-xs">Home</span>
     <% end %>
 
     <!-- Partners Icon (Redirect to partners_path) -->
-    <%= link_to partners_path, class: "flex flex-col items-center text-[#1c4b46] hover:text-gray-700 mb-6" do %>
+    <%= link_to partners_path, class: "flex flex-col items-center text-[#1c4b46] hover:text-gray-700 mb-3" do %>
       <%= image_tag "partners-solid-svgrepo-com.svg", alt: "Partners", class: "h-6" %>
       <span class="text-xs">Partners</span>
     <% end %>
 
     <!-- Products Icon (Redirect to products_path) -->
-    <%= link_to products_path, class: "flex flex-col items-center text-[#1c4b46] hover:text-gray-700 mb-6" do %>
+    <%= link_to products_path, class: "flex flex-col items-center text-[#1c4b46] hover:text-gray-700 mb-3" do %>
       <%= image_tag "product-svgrepo-com.svg", alt: "Products", class: "h-6" %>
       <span class="text-xs">Products</span>
     <% end %>
 
     <!-- Profile Icon (Redirect to users_path) -->
-    <%= link_to users_path, class: "flex flex-col items-center text-[#1c4b46] hover:text-gray-700 mb-6" do %>
+    <%= link_to users_path, class: "flex flex-col items-center text-[#1c4b46] hover:text-gray-700 mb-3" do %>
       <%= image_tag "user-circle-svgrepo-com.svg", alt: "Profile", class: "h-6" %>
       <span class="text-xs">Profile</span>
     <% end %>
@@ -28,23 +28,34 @@
   </div>
 </footer>
 
-<!-- Add extra margin for icons inside the footer to avoid obstruction, while keeping footer background to the bottom -->
+<!-- Styling -->
 <style>
   footer {
-    /* Ensure the footer itself remains at the bottom of the screen */
-    background-color: #c1dbcc; /* Background color of the footer */
-    padding-bottom: 0; /* No additional padding on the bottom of the footer */
+    /* Footer background remains fixed to the bottom */
+    background-color: #c1dbcc;
   }
 
-  /* Add margin only to the icons within the footer */
+  /* Add margin only to the icons, with reduced size */
   footer a {
-    margin-bottom: 20px; /* Add space above icons to avoid the swipe-up area */
+    margin-bottom: 10px; /* Smaller margin */
   }
 
+  /* Padding on the sides for wider spacing between icons and the edges */
+  .footer div {
+    padding-left: 10px;  /* Adds space on the left and right of the icons */
+    padding-right: 10px;
+  }
+
+  /* Media query for mobile devices */
   @media (max-width: 768px) {
-    /* Reduce margin for icons on smaller devices */
     footer a {
-      margin-bottom: 15px;
+      margin-bottom: 8px; /* Slightly smaller margin for mobile */
+    }
+
+    /* Reduce side padding for mobile screens */
+    .footer div {
+      padding-left: 8px;
+      padding-right: 8px;
     }
   }
 </style>
