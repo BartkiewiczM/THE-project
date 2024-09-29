@@ -40,13 +40,13 @@
             </div>
           </div>
           <div class="mt-10">
-            <button type="submit" class="w-full rounded-md border border-transparent bg-indigo-600 px-4 py-3 text-base font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-50">Checkout</button>
+            <button type="submit" class="w-full rounded-md border border-transparent bg-black px-4 py-3 text-base font-medium text-white shadow-sm hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-black focus:ring-offset-2 focus:ring-offset-gray-50">Checkout</button>
           </div>
 
           <div class="mt-6 text-center text-sm text-gray-500">
             <p>
               or
-              <%= link_to products_path, class: "font-medium text-indigo-600 hover:text-indigo-500" do %>
+              <%= link_to products_path, class: "font-medium text-black hover:text-gray-800" do %>
                 Continue Shopping <span aria-hidden="true"> &rarr;</span>
               <% end %>
             </p>
@@ -84,7 +84,7 @@
                     </div>
 
                     <div class="mt-4 flex items-center sm:absolute sm:left-1/2 sm:top-0 sm:mt-0 sm:block">
-                      <%= link_to "Remove", cart_item_path(cart_item.id), data: {turbo_method: "DELETE"}, class: "text-base font-medium text-indigo-600 hover:text-indigo-500 sm:ml-0 sm:mt-3" %>
+                      <%= link_to "Remove", cart_item_path(cart_item.id), data: {turbo_method: "DELETE"}, class: "text-base font-medium text-black hover:text-gray-800 sm:ml-0 sm:mt-3" %>
                     </div>
                   </div>
 
@@ -138,13 +138,13 @@
             </div>
           </div>
           <div class="mt-10">
-            <button type="submit" class="w-full rounded-md border border-transparent bg-indigo-600 px-4 py-3 text-base font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-50">Checkout</button>
+            <button type="submit" class="w-full rounded-md border border-transparent bg-black px-4 py-3 text-base font-medium text-white shadow-sm hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-black focus:ring-offset-2 focus:ring-offset-gray-50">Checkout</button>
           </div>
 
           <div class="mt-6 text-center text-sm text-gray-500">
             <p>
               or
-              <%= link_to products_path, class: "font-medium text-indigo-600 hover:text-indigo-500" do %>
+              <%= link_to products_path, class: "font-medium text-black hover:text-gray-800" do %>
                 Continue Shopping <span aria-hidden="true"> &rarr;</span>
               <% end %>
             </p>
